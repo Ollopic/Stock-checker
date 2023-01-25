@@ -1,18 +1,8 @@
 import requests
 import time
 from bs4 import BeautifulSoup
+from variables import *
 
-# URL de la page web à vérifier
-url = 'exemple.com'
-
-# Élément à rechercher
-selector = 'element-css'
-
-# Texte à rechercher
-text = 'Texte à rechercher'
-
-# URL du webhook Discord
-webhook_url = 'URL of Discord webhook'
 
 # Boucle infinie pour vérifier la page toutes les minutes
 while True:
