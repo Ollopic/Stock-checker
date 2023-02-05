@@ -1,0 +1,7 @@
+version: '3.11'
+
+services:
+  app:
+    image: ghcr.io/ollopic/stock-checker:latest
+    volumes:
+      - ./variables.py:/app/variables.py
