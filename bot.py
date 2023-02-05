@@ -17,5 +17,5 @@ while find == False:
             # Envoi d'un message sur Discord si l'élément n'est pas présent
             requests.post(webhook_url, json={'content': 'Le produit est maintenant disponible ! sur le site : ' + sites[nSite]['url']})
             find = True
-        else:
-            time.sleep(60)
+
+    time.sleep(60)
