@@ -15,17 +15,22 @@ while find == False:
 
             # Vérification si l'élément est présent
             element = soup.select_one(sites[nSite]['selector'])
-            print(element)
-            if element and sites[nSite]['text'] not in element.text:
+            if sites[nSite]['text'] != element.text:
                 # Envoi d'un message sur Discord si l'élément n'est pas présent (le produit est disponible)
-                requests.post(webhook_url, json={'content': 'Le produit est maintenant disponible ! sur le site : ' + sites[nSite]['url']})
+                requests.post(webhook_url, json={
+                    'content': f'<@{id_user}> Le produit est maintenant disponible ! sur le site : {sites[nSite]["url"]}'
+                })
                 find = True
             if element == None:
                 # Envoi d'un message sur Discord informant que le selecteur CSS n'a pas été trouvé
-                requests.post(webhook_url, json={'content': 'Le selecteur CSS du site ' + sites[nSite]['url'] + ' n\'a pas été trouvé.'})
+                requests.post(webhook_url, json={
+                    'content': f'<@{id_user}> Le selecteur CSS du site {sites[nSite]["url"]} n\'a pas été trouvé.'
+                })
                 find = True
         except requests.exceptions.Timeout:
             # Envoi d'un message sur Discord informant que le site a mis trop de temps à répondre
-            requests.post(webhook_url, json={'content': 'Le site ' + sites[nSite]['url'] + ' a mis trop de temps à répondre.'})
+            requests.post(webhook_url, json={
+                'content': f'<@{id_user}> Le site {sites[nSite]["url"]} a mis trop de temps à répondre.'
+            })
 
-    time.sleep(50)
+    time.sleep(60)

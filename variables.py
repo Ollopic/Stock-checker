@@ -7,3 +7,6 @@ sites = [
 
 # URL du webhook Discord
 webhook_url = 'URL du webhook Discord'
+
+# ID de l'utilisateur Discord à mentionner
+id_user = 'ID'
